@@ -1,0 +1,40 @@
+[config]
+
+prefix = "@"
+group_window_and_view = false
+
+[templates.waybar]
+input_path = "templates/waybar-colors.css"
+output_path = "~/.config/waybar/colors.css"
+
+[templates.rofi]
+input_path = "~/dotfiles/matugen/templates/rofi.rasi"
+output_path = "~/.config/rofi/colors.rasi"
+
+[templates.wofi]
+input_path = "templates/wofi-colors.css"
+output_path = "~/.config/wofi/colors.css"
+
+[templates.hyprland]
+input_path = "~/dotfiles/matugen/templates/hyprland.conf"
+output_path = "~/.config/hypr/colors.conf"
+
+[templates.hyprlock]
+input_path = "~/dotfiles/matugen/templates/hyprlock.conf"
+output_path = "~/.config/hypr/hyprlock_colors.conf"
+
+[templates.swaync]
+input_path = "~/dotfiles/matugen/templates/swaync_colors.css"
+output_path = "~/.config/swaync/colors.css"
+
+[templates.vscode]
+input_path = "templates/vscode.json"
+output_path = "~/.config/Code - OSS/User/matugen-colors.json"
+
+[templates.kitty]
+input_path = "templates/kitty-colors.conf"
+output_path = "~/.config/kitty/matugen-colors.conf"
+
+[templates.firefox]
+input_path = "templates/firefox_colors.css"
+output_path = "/home/ollel/.mozilla/firefox/cof7ry9y.default-release/chrome/matugen-colors.css"

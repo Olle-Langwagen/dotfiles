@@ -1,0 +1,9 @@
+* {
+    BG:    {{colors.background.default.hex}}ff;
+    FG:    {{colors.on_surface.default.hex}}ff;
+    BGA:   {{colors.primary.default.hex}}ff;
+    SEL:   {{colors.primary.default.hex}}ff;
+    UGT:   {{colors.error.default.hex}}ff;
+    IMG:   {{colors.primary.default.hex}}ff;
+    ON:    {{colors.primary_container.default.hex}}ff;
+}

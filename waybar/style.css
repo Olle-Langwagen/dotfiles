@@ -1,0 +1,145 @@
+@import "colors.css";
+
+* {
+    font-family: 'JetBrainsMono Nerd Font', sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(0,0,0,0);
+    color: @on_surface;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#backlight,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery,
+#power-profiles-daemon,
+#custom-notification,
+#tray {
+    padding: 0 14px;
+    background-color: @transparent;
+    color: @on_surface;
+    margin: 4px 0;
+    transition: all 0.2s ease-in-out;
+}
+
+/* --- VÄNSTER SIDA --- */
+#workspaces {
+    border-radius: 6px;
+    margin-right: 8px;
+    padding: 0 4px;
+    background-color: alpha(@background, 0.6);
+}
+
+#cpu {
+    background-color: alpha(@background, 0.6);
+    border-radius: 6px 0 0 6px;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#memory {
+    background-color: alpha(@background, 0.6);
+    border-radius: 0 6px 6px 0;
+}
+
+/* --- MITTEN --- */
+#clock {
+    background-color: alpha(@background, 0.6);
+    border-radius: 6px;
+}
+
+/* --- HÖGER SIDA --- */
+#bluetooth {
+    background-color: alpha(@background, 0.6);
+    border-radius: 6px 0 0 6px;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#network, #pulseaudio, #backlight, #power-profiles-daemon, #tray {
+    background-color: alpha(@background, 0.6);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#battery {
+    background-color: alpha(@background, 0.6);
+    border-radius: 0 6px 6px 0;
+}
+
+#custom-notification {
+    background-color: alpha(@background, 0.6);
+    border-radius: 6px;
+    margin-left: 8px;
+}
+
+/* --- TRAY --- */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* --- HOVER EFFEKTER --- */
+#clock:hover, #cpu:hover, #memory:hover, #backlight:hover, #pulseaudio:hover, #bluetooth:hover, #network:hover, #battery:hover, #power-profiles-daemon:hover {
+    background-color: @primary_container; 
+    color: @on_primary_container;
+}
+
+/* --- WORKSPACES --- */
+#workspaces button {
+    padding: 0 8px;
+    margin: 4px 4px;
+    color: @on_surface_variant;
+    background-color: transparent;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(.55,-0.04,.3,1.44);
+}
+
+/* Aktiv workspace */
+#workspaces button.active {
+    color: @on_primary; 
+    background-color: @primary;
+    padding: 0 18px;
+}
+
+#workspaces button.urgent {
+    color: @on_error;
+    background-color: @error;
+}
+
+#workspaces button:hover {
+    background-color: @secondary_container;
+    color: @on_secondary_container;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* --- BATTERIVARNING --- */
+#battery.critical:not(.charging) {
+    background-color: @error;
+    color: @on_error;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: @on_error;
+        color: @error;
+    }
+}

@@ -1,0 +1,9 @@
+:root {
+    --bg-color: {{colors.surface.default.hex}};
+    --fg-color: {{colors.on_surface.default.hex}};
+    --primary: {{colors.primary.default.hex}};
+    --tab-active: {{colors.surface_container_highest.default.hex}};
+    --tab-inactive: {{colors.surface_container_low.default.hex}};
+    --url-bg: {{colors.surface_container.default.hex}};
+    --border-color: {{colors.surface_variant.default.hex}};
+}

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+WALL_DIR="$HOME/Pictures/Wallpapers"
+
+THEME="~/.config/rofi/launchers/type-6/style-2.rasi"
+
+list_images() {
+    for img in "$WALL_DIR"/*.{jpg,jpeg,png,webp}; do
+        [ -e "$img" ] || continue
+        printf "%s\x00icon\x1f%s\n" "$(basename "$img")" "$img"
+    done
+}
+CHOICE=$(list_images | rofi -dmenu -i -theme "$THEME")
+
+if [ -n "$CHOICE" ]; then
+    FULL_PATH="$WALL_DIR/$CHOICE"
+    if [ -f "$FULL_PATH" ]; then
+        cp "$FULL_PATH" ~/.cache/current_wallpaper.jpg
+	awww img "$FULL_PATH" --transition-type center        
+
+        # Kör Matugen
+        matugen image "$FULL_PATH" -m dark --prefer saturation
+        
+        # Ladda om saker
+        killall -SIGUSR2 waybar
+	swaync-client -rs
+	killall -SIGUSR1 kitty
+
+	VSCODE_SETTINGS="$HOME/.config/Code - OSS/User/settings.json"
+	MATUGEN_COLORS="$HOME/.config/Code - OSS/User/matugen-colors.json"
+
+	[[ ! -f "$VSCODE_SETTINGS" || ! -s "$VSCODE_SETTINGS" ]] && echo "{}" > "$VSCODE_SETTINGS"
+
+
+	if jq -s '.[0] * .[1]' "$VSCODE_SETTINGS" "$MATUGEN_COLORS" > /tmp/vscode_sync.json 2>/dev/null; then
+    		cat /tmp/vscode_sync.json > "$VSCODE_SETTINGS"
+    		echo "VS Code-färgerna synkade"
+	else
+    		echo "Fel: Kunde inte slå ihop JSON. Kontrollera om matugen-colors.json ser rätt ut."
+	fi
+    else
+        notify-send "Sökfel" "Kunde inte hitta filen: $FULL_PATH"
+    fi
+fi

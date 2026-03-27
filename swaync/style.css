@@ -1,0 +1,71 @@
+@import url("/home/ollel/.config/swaync/colors.css");
+
+* {
+    font-family: 'JetBrainsMono Nerd Font', sans-serif;
+    color: @m_text;
+}
+
+.control-center {
+    background-color: @m_bg;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    margin: 10px;
+    padding: 10px;
+}
+
+.notification {
+    /* Vi använder rgba direkt för transparens om alpha() bråkar */
+    background-color: alpha(@m_surface, 0.85);
+    border-radius: 12px;
+    margin: 0px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    padding: 15px;
+}
+
+.notification-content {
+    background: transparent;
+}
+
+.notification-row {
+    outline: none;
+    margin: 10px;
+    padding: 0;
+}
+
+.close-button {
+    background: transparent;
+    color: @m_text;
+    border: none;
+}
+
+.close-button:hover {
+    background-color: @m_error;
+    color: @m_bg;
+}
+
+.widget-title {
+    color: @m_text;
+}
+
+.widget-title > button {
+    color: @m_text;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.widget-title > button:hover {
+    background: @m_error;
+    color: @m_bg;
+}
+
+.widget-dnd > switch:checked {
+    background: @m_primary;
+}
+
+.widget-dnd > switch slider {
+    background: @m_text;
+}
+
+.widget-dnd > switch:checked slider {
+    background: @m_bg;
+}

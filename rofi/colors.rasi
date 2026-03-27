@@ -1,0 +1,5 @@
+* {
+    m-primary: #d1bcfd;
+    m-bg: #141218;
+    m-text: #e7e0e8;
+}

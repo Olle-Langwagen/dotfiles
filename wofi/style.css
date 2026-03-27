@@ -1,0 +1,77 @@
+@import url("/home/ollel/.config/wofi/colors.css");
+
+* {
+    font-family: 'JetBrainsMono Nerd Font', sans-serif;
+    font-size: 14px;
+    color: @text; 
+}
+
+/* Huvudfönstret */
+#window {
+    background-color: @background;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+}
+
+/* Sökrutan */
+#input {
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: none;
+    color: @text;
+}
+
+#input:focus {
+    outline: none;
+    border: 1px solid @primary;
+}
+
+#inner-box {
+    margin: 0px 10px 10px 10px;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 5px;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: @text;
+}
+
+#entry {
+    padding: 5px;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+#entry:focus, #entry:selected {
+    background-color: @primary;
+}
+
+#entry:focus #text, #entry:selected #text {
+    color: @background; 
+    font-weight: bold;
+}
+
+/* Ikonerna */
+#img {
+    margin-right: 15px;
+    width: 120px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
