@@ -137,6 +137,18 @@ window#waybar {
     animation-direction: alternate;
 }
 
+/* --- TOOLTIPS --- */
+tooltip {
+    background-color: alpha(@background, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+tooltip label {
+    color: @on_surface;
+    padding: 6px 10px;
+}
+
 @keyframes blink {
     to {
         background-color: @on_error;

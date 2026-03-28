@@ -51,7 +51,7 @@
     "timezone": "Europe/Stockholm",
     "tooltip": true,
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "{:%H:%M}",
+    "format": "{:%a %d %H:%M}",
     "interval": 60
   },
 
@@ -64,7 +64,7 @@
   },
 
   "cpu": {
-    "interval": 2,
+    "interval": 5,
     "format": "",
     "tooltip": true,
     "tooltip-format": "CPU: {usage}%"
@@ -106,7 +106,7 @@
     },
     "format": "{icon} {capacity}",
     "format-charging": " {capacity}",
-    "format-plugged": " Full",
+    "format-plugged": "",
     "format-icons": ["", "", "", "", ""]
   },
 
