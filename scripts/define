@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+word=$(wl-paste -p | xargs)
+
+[ -z "$word" ] && exit 0
+
+encoded_word=$(jq -rn --arg x "$word" '$x|@uri')
+
+gt_url="https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=$encoded_word"
+english_word=$(curl -s "$gt_url" | jq -r '.[0][0][0]' | tr '[:upper:]' '[:lower:]')
+
+encoded_en_word=$(jq -rn --arg x "$english_word" '$x|@uri')
+
+dict_url="https://api.dictionaryapi.dev/api/v2/entries/en/$encoded_en_word"
+dict_response=$(curl -s "$dict_url")
+
+if [[ "$dict_response" == *"No Definitions Found"* ]] || [ -z "$dict_response" ] || [[ "$dict_response" == "[]" ]]; then
+    
+    dm_def_resp=$(curl -s "https://api.datamuse.com/words?sp=$encoded_en_word&md=d&max=1")
+    definition=$(echo "$dm_def_resp" | jq -r '.[0].defs[0] // empty' | sed 's/^[a-z]*\t//')
+    
+    dm_syn_resp=$(curl -s "https://api.datamuse.com/words?rel_syn=$encoded_en_word&max=5")
+    synonyms=$(echo "$dm_syn_resp" | jq -r '.[].word // empty' | paste -sd ", " -)
+    
+    if [ -z "$definition" ]; then
+        notify-send -a "Dictionary" "Not found" "No definition for: <i>$word</i>"
+        exit 0
+    fi
+else
+    definition=$(echo "$dict_response" | jq -r '.[0].meanings[0].definitions[0].definition // empty')
+    synonyms=$(echo "$dict_response" | jq -r '[.[0].meanings[].synonyms[]?] | unique | .[0:5] | join(", ")')
+fi
+
+body="<b>Meaning:</b> $definition"
+
+if [ -n "$synonyms" ] && [ "$synonyms" != "null" ] && [ "$synonyms" != "" ]; then
+    body="$body\n<b>Synonyms:</b> $synonyms"
+fi
+
+notify-send -a "Dictionary" "$word" "$body"

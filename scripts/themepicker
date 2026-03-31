@@ -16,12 +16,9 @@ if [ -n "$CHOICE" ]; then
     FULL_PATH="$WALL_DIR/$CHOICE"
     if [ -f "$FULL_PATH" ]; then
         cp "$FULL_PATH" ~/.cache/current_wallpaper.jpg
-	awww img "$FULL_PATH" --transition-type center        
-
-        # Kör Matugen
+	    awww img "$FULL_PATH" --transition-type center    
         matugen image "$FULL_PATH" -m dark --prefer saturation
         
-        # Ladda om saker
         killall -SIGUSR2 waybar
 	swaync-client -rs
 	killall -SIGUSR1 kitty
@@ -34,11 +31,11 @@ if [ -n "$CHOICE" ]; then
 
 	if jq -s '.[0] * .[1]' "$VSCODE_SETTINGS" "$MATUGEN_COLORS" > /tmp/vscode_sync.json 2>/dev/null; then
     		cat /tmp/vscode_sync.json > "$VSCODE_SETTINGS"
-    		echo "VS Code-färgerna synkade"
+    		echo "VS Code colors synced"
 	else
-    		echo "Fel: Kunde inte slå ihop JSON. Kontrollera om matugen-colors.json ser rätt ut."
+    		echo "Error: Check matugen-colors"
 	fi
     else
-        notify-send "Sökfel" "Kunde inte hitta filen: $FULL_PATH"
+        notify-send "Error" "Couldn't find file: $FULL_PATH"
     fi
 fi

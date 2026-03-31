@@ -1,0 +1,1 @@
+Toggleterm - Ctrl + T

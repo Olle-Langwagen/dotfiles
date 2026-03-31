@@ -20,6 +20,7 @@ window#waybar {
 #clock,
 #cpu,
 #memory,
+#temperature,
 #backlight,
 #pulseaudio,
 #bluetooth,
@@ -51,9 +52,14 @@ window#waybar {
 
 #memory {
     background-color: alpha(@background, 0.6);
-    border-radius: 0 6px 6px 0;
+    border-radius: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+#temperature {
+    background-color: alpha(@background, 0.6);
+    border-radius: 0 6px 6px 0;
+}
 /* --- MITTEN --- */
 #clock {
     background-color: alpha(@background, 0.6);
