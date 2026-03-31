@@ -15,6 +15,8 @@ opt.termguicolors = true
 opt.wrap = false
 opt.signcolumn = "yes" 
 
-vim.opt.clipboard = "unnamedplus"
 
+vim.opt.undofile = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.cursorline = true
 vim.opt.scrolloff = 15
