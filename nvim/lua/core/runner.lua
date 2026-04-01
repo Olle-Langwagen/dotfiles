@@ -26,10 +26,10 @@ keymap.set('n', '<F5>', function()
     elseif filetype == 'sh' then
         cmd = 'bash ' .. file
     else
-        print("Inget byggkommando konfigurerat för: " .. filetype)
+        print("No build configured (runner.lua): " .. filetype)
         return
     end
 
     -- Toggleterm
     vim.cmd('TermExec cmd="' .. cmd .. '" direction=float')
-end, { desc = "Spara och kör kod" })
+end, { desc = "Save and run" })

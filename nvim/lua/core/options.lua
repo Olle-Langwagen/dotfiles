@@ -20,3 +20,9 @@ vim.opt.undofile = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 15
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+opt.updatetime = 250
+opt.timeoutlen = 400
