@@ -1,2 +1,4 @@
 Toggleterm - Ctrl + T
 Comment - gc, gcc, gc4j
+
+Lab cmake: cmake ..,  cmake --build . -j"$(nproc)", ./RayTraceRunner
