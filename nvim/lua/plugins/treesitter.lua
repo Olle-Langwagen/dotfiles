@@ -10,15 +10,9 @@ return {
 
         configs.setup({
             ensure_installed = { 
-                "c", 
                 "python", 
                 "c_sharp", 
-                "lua", 
-                "vim", 
-                "vimdoc", 
-                "query",
-                "bash",
-                "markdown"
+                "bash"
             },
             highlight = { 
                 enable = true,

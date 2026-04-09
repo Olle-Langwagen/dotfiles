@@ -15,9 +15,17 @@ return {
     opts = {
         formatters_by_ft = {
             c = { "clang-format" },
+            cpp = { "clang-format" },
             python = { "black" },
             cs = { "csharpier" },
         },
+        formatters = {
+            black = {
+                prepend_args = { "--line-length", "9999" },
+            },
+            ["clang-format"] = {
+                prepend_args = { "-style={ColumnLimit: 0}" },
+            },},
         format_on_save = {
             timeout_ms = 500,
             lsp_fallback = true,
