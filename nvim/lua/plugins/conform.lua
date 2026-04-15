@@ -26,8 +26,7 @@ return {
             ["clang-format"] = {
                 prepend_args = { "-style={ColumnLimit: 0}" },
             },},
-        format_on_save = {
-            timeout_ms = 500,
+        format_after_save = {
             lsp_fallback = true,
         },
     },
